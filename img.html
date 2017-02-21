@@ -9,19 +9,19 @@
 </body>
 <script>
 window.onload=function(){
-	let main=document.getElementById('main');
+    let main=document.getElementById('main');
 
-	let array=['1.png','2.png','3.png','4.png','5.png','6.png'].map(function(value,index){
-		return function() {
+    let array=['1.png','2.png','3.png','4.png','5.png','6.png'].map(function(value,index){
+	return function() {
     	    return new Promise(function(resolve) {
-        		img=new Image();
-        		img.onload=((value)=>{console.log('加载完'+value);resolve();})(value)
-    			img.src=value;
-				main.append(img);
-    		});
-	}});
+        	img=new Image();
+        	img.onload=((value)=>{console.log('加载完'+value);resolve();})(value)
+    		img.src=value;
+		main.append(img);
+    	    });
+    }});
 
-	let load = function(arr) {
+    let load = function(arr) {
         arr.reduce((p, loadFunc) => p.then(loadFunc), Promise.resolve());
     };
 
